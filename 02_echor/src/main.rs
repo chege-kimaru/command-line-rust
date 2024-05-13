@@ -1,11 +1,20 @@
-fn main() {
-    println!("Hello, world!");
+use clap::Parser;
+
+#[derive(Debug, Parser)]
+#[command(author, version, about)]
+/// Rust version of `echo`
+struct Args {
+    /// Input text
+    #[arg(required(true))]
+    text: Vec<String>,
+
+    /// Do not print newline
+    #[arg(short('n'))]
+    omit_newline: bool,
 }
 
-// echo Hello
-// echo "Hello    World"
-// man echo
-// echo -n "Hello"
-// echo Hello > hello
-// echo -n Hello > hello-n
-// diff hello hello-n
+fn main() {
+    let args = Args::parse();
+    // dbg!(args);
+    print!("{}{}", args.text.join(" "), if args.omit_newline { "" } else { "\n" });
+}
