@@ -449,3 +449,5 @@ mod tests {
 
 // To better benchmark, use hyperfine Rust crate. `cargo install hyperfine`
 // Usage: hyperfine -i -L prg tail,target/release/tailr '{prg} 1M.txt > /dev/null'
+
+// Use https://github.com/kyclark/command-line-rust.git -> util/biggie to generate a big file
